@@ -1,0 +1,8 @@
+{
+  "name": "quantibird-mobile",
+  "app_id": "6fe6d77f",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

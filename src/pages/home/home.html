@@ -3,16 +3,37 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Quantibird - Umfragen</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+  <ion-card *ngFor="let survey of surveys" (click)="goToSurvey(survey)">
+    <ion-card-header>
+      <ion-badge class="question-badge">
+        {{survey.questions.length}}q
+      </ion-badge>
+      <ion-row>
+        <ion-col>
+          <small>{{survey.createdAt | date}}</small>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="title">
+          {{survey.name}}
+        </ion-col>
+      </ion-row>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col>
+          {{survey.description}}
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <!--button ion-button secondary menuToggle>Toggle Menu</button-->
+
 </ion-content>

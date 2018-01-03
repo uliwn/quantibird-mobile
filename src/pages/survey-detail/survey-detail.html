@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Quantibird - {{survey.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides pager>
+
+    <ion-slide *ngFor="let q of questions">
+      <h2>{{q.title}}</h2>
+
+      <div class="answer-item" *ngFor="let answer of q.answers">
+        <button [ngClass]="{'selected': answer?.selected}"
+                ion-button full large
+                color="light"
+                (click)="onAnswer(q, answer)">{{answer.title}}</button>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <h2>Herzliche Gratulaiton!</h2>
+      <img src="./assets/imgs/good_job.png" width="100%">
+      <button ion-button full large>
+        Abschicken
+      </button>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>

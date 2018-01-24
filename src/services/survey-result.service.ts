@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
-import { Survey } from '../models/survey.model';
+import { SurveyResult } from '../models/survey-result.model';
 
 @Injectable()
-export class SurveyService {
+export class SurveyResultService {
 
   baseUrl: string;
 
@@ -14,8 +14,8 @@ export class SurveyService {
     this.baseUrl = 'http://localhost:3000';
   }
 
-  getSurveys(): Observable<Survey[]> {
-    return this.http.get<Survey[]>(`${this.baseUrl}/api/surveys`);
+  addResult(result: SurveyResult): Observable<SurveyResult> {
+    return this.http.post<SurveyResult>(`${this.baseUrl}/api/result`, result);
   }
 
 }

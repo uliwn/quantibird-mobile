@@ -10,6 +10,7 @@ import { ListPage } from '../pages/list/list';
 import { SurveyDetailPage } from '../pages/survey-detail/survey-detail';
 
 import { SurveyService } from '../services/survey.service';
+import { SurveyResultService } from "../services/survey-result.service";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -37,6 +38,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     SurveyService,
+    SurveyResultService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

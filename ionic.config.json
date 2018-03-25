@@ -7,7 +7,7 @@
   },
   "proxies": [
     {
-      "path": "/api",
+      "path": "",
       "proxyUrl": "http://quantibird.herokuapp.com/api"
     }
   ]

@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Quantibird - Umfragen</ion-title>
+    <ion-title>Umfragen - Quantibird</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -12,7 +12,7 @@
   <ion-card *ngFor="let survey of surveys" (click)="goToSurvey(survey)">
     <ion-card-header>
       <ion-badge class="question-badge">
-        {{survey.questions.length}}q
+        {{survey.questions.length}}
       </ion-badge>
       <ion-row>
         <ion-col>

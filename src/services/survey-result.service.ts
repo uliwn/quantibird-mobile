@@ -10,7 +10,7 @@ export class SurveyResultService {
   baseUrl: string;
 
   constructor(private http: HttpClient) {
-    this.baseUrl = 'https://quantibird.herokuapp.com';
+    this.baseUrl = 'http://quantibird.herokuapp.com';
     //this.baseUrl = 'http://localhost:3000';
   }
 

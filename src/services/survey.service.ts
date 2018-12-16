@@ -16,7 +16,7 @@ export class SurveyService {
   }
 
   getSurveys(): Observable<Survey[]> {
-    return this.http.get<Survey[]>(`${this.baseUrl}/api/surveys`);
+    return this.http.get<Survey[]>(`${this.baseUrl}/api/surveys/active`);
   }
 
 }

@@ -24,3 +24,498 @@
 ion-card-header {
   background-color: #33c0e2;
 }
+
+// mixin in all App
+@mixin placeholder {
+  ::-webkit-input-placeholder    {@content}
+  ::-webkit-textarea-placeholder {@content}
+  :-moz-placeholder              {@content}
+  ::-moz-placeholder             {@content}
+  :-ms-input-placeholder         {@content}
+};
+@mixin whiteNormal($height,$lineNum){
+  white-space: normal;
+  max-height: $height;
+  line-height: $height / $lineNum;
+  display: block;
+  overflow: hidden;
+}
+@mixin whiteNoWrap($height){
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  height: $height;
+  line-height: $height;
+  display: block;
+}
+
+@mixin position($top,$right,$bottom,$left){
+  position:absolute;
+  top:$top;
+  right:$right;
+  left:$left;
+  bottom:$bottom;
+}
+
+// Padding
+[padding]{
+  padding:$content-padding!important;
+  .scroll-content{
+    padding:$content-padding!important;
+  }
+}
+[padding-right]{
+  padding-right:$content-padding!important;
+}
+[padding-left]{
+  padding-left:$content-padding!important;
+}
+
+[padding-horizontal]{
+  padding-right:$content-padding!important;
+  padding-left:$content-padding!important;
+}
+[padding-vertical]{
+  padding-top:$content-padding!important;
+  padding-bottom:$content-padding!important;
+}
+// margin
+[margin-left],[item-end],[item-right]{
+  margin:0px 0px 0px $content-padding!important;
+}
+[margin-right],[item-start],[item-left]{
+  margin:0px $content-padding 0px 0px  !important;
+}
+[margin-horizontal]{
+  margin-right:$content-padding!important;
+  margin-left:$content-padding!important;
+}
+[margin-vertical]{
+  margin-top:$content-padding!important;
+  margin-bottom:$content-padding!important;
+}
+
+[no-margin]{
+  margin:0px!important;
+}
+
+//Style of img Background
+.imgBg{
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+  background-position:center center;
+}
+%inputFont{
+  color: color($colors,dark);
+  font-size:$mainFont - .1!important;
+  font-weight: 400;
+}
+ion-badge {
+  &.badge{
+    padding: 0px 6px;
+    @include  whiteNoWrap(20px);
+    max-width:75px;
+    border-radius:15px;
+    font-size:1.1rem;
+  }
+}
+
+.button{
+  margin:0px;
+  min-height:0px;
+  text-transform:none;
+}
+
+.col{
+  overflow:hidden;
+}
+
+// header
+.header{
+  .toolbar-background {
+    background:$header-background;
+    border-bottom:none;
+  }
+  .toolbar{
+    padding:$content-padding/2;
+  }
+  .title{
+    padding:0px;
+  }
+  .toolbar-title{
+    padding:0px $toolbar-md-height - $content-padding;;
+    font-weight:400;
+  }
+  .bar-buttons{
+    margin:0px;
+    display:flex;
+    flex-direction:row;
+  }
+  .bar-button{
+    margin:0px;
+    height:$toolbar-md-height - $content-padding*2;
+    width:$toolbar-md-height - $content-padding*2;
+    ion-icon{
+      color:color($colors,light);
+      font-size:2rem;
+      &.goal-menu{
+        font-size:1.2rem;
+        transform: scale(-1,1);
+      }
+    }
+    &:after{
+      position:initial;
+    }
+    &.bar-button-menutoggle{
+      display:inline-block!important;
+    }
+  }
+  &:after{
+    position:initial;
+    background:none;
+  }
+}
+
+.list{
+  margin:0px;
+  >.item-block{
+    &:first-of-type{
+      border-top:none;
+    }
+    &:last-of-type{
+      border-bottom:none;
+    }
+  }
+  .list-header{
+    min-height:0px;
+    border-bottom:0px;
+    letter-spacing: normal;
+    text-transform: none;
+    border-top:0px;
+    margin-bottom:0px;
+    .label{
+      white-space:normal;
+    }
+  }
+}
+
+
+.item{
+  padding:0px;
+  background-color:transparent;
+  .label{
+    margin:0px;
+    @extend %inputFont;
+  }
+  &.item-block{
+    min-height:0px;
+    &:last-of-type{
+      margin-bottom:0px!important;
+    }
+    .item-inner{
+      padding:0px;
+      border-bottom:none;
+      margin:0px!important;
+    }
+  }
+
+  &.item-select{
+    min-height:$control-height;
+    border:1px solid color($colors,color2);
+    .label {
+      @extend %inputFont;
+      font-weight:500;
+    }
+    .select-text{
+      @extend %inputFont;
+      color: color($colors,dark);
+      &.select-placeholder{
+        color:$select-ios-placeholder-color;
+      }
+    }
+    .select{
+      padding:0px;
+      max-width:50%;
+      height: 100%;
+      align-items: center;
+      .select-icon{
+        width:auto;
+        height:auto;
+        display: flex;
+        align-items: center;
+        padding:0px 3px;
+        .select-icon-inner{
+          position: initial;
+          margin:0px!important;
+          color: color($colors,color1);
+        }
+      }
+    }
+  }
+  &.item-toggle{
+    min-height:$control-height;
+    .label {
+      @extend %inputFont;
+      font-weight:500;
+    }
+    .toggle{
+      width: 38px;
+      height: 20px;
+      padding:0px;
+      .toggle-icon{
+        background:rgba(color($colors,color1),.5);
+      }
+      .toggle-inner{
+        width:18px;
+        height:18px;
+        left:1px;
+        top:1px;
+        background: color($colors,color1);
+      }
+    }
+  }
+  &.item-checkbox{
+    margin:0px;
+    min-height:$control-height;
+    .checkbox{
+      margin:0px;
+      .checkbox-icon{
+        background:none;
+        border-color:color($colors,color2);
+        &.checkbox-checked{
+          .checkbox-inner{
+            transform:none;
+            @include position(0,0,0,0);
+            margin:auto;
+            border-radius:$control-radius;
+            width: 8px;
+            height: 8px;
+            background: color($colors,color1);
+            border:none;
+          }
+        }
+      }
+    }
+    .label {
+      @extend %inputFont;
+      font-weight:500;
+    }
+  }
+  &.item-input{
+    .input{
+      @extend %inputFont;
+    }
+  }
+  &.item-textarea{
+    height:auto;
+  }
+  .text-input{
+    transform:none!important;
+    width:100%;
+    margin:0px;
+  }
+}
+.select-popover{
+  ion-backdrop{
+    opacity:0!important;
+  }
+  .popover-arrow{
+    display:none;
+  }
+  .popover-content{
+    left:$content-padding!important;
+    right:$content-padding!important;
+    border-radius:0px;
+    border-top-left-radius: 0px;
+    border-top-right-radius:0px;
+    padding: 0px $content-padding;
+    border:1px solid color($colors,color3);
+    background: color($colors,color4)!important;
+    width:auto;
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.35);
+    .list{
+      padding:$content-padding 0px;
+      .item{
+        direction:rtl;
+        padding:0px;
+        align-items:center;
+        height:34px;
+        .input-wrapper{
+          direction:ltr;
+          padding:0px $content-padding;
+        }
+        .radio{
+          margin:0px;
+          .radio-icon{
+            width:16px;
+            height:16px;
+            background-color:color($colors,light);
+            border-radius:2px;
+            border-color:color($colors,dark);
+            &.radio-checked{
+              position: relative;
+              .radio-inner{
+                transform:none;
+                width:10px;
+                height:10px;
+                background-color: color($colors,color1);
+                border:none;
+                border-radius:2px;
+                @include position(0px,0px,0px,0px);
+                margin: auto;
+              }
+            }
+          }
+        }
+        .label{
+          @extend p;
+          color:color($colors,dark);
+          font-weight:500;
+          white-space:normal;
+          line-height:20px;
+        }
+      }
+    }
+  }
+}
+
+// actionsheet style
+.action-sheet-wrapper{
+  width:80%;
+  .action-sheet-title{
+    background-color: color($colors,color1);
+    color:color($colors,light);
+    font-size:$mainFont;
+    padding:0px $content-padding;
+    height:$control-height;
+    line-height:$control-height;
+
+  }
+  .action-sheet-cancel{
+    background-color: color($colors,color2)!important;
+    color: color($colors,light)!important;
+    border-bottom:none!important;
+  }
+  .action-sheet-group{
+    border-radius:$control-radius;
+    border-bottom-right-radius:0px;
+    border-bottom-left-radius:0px;
+    padding-top:0px!important;
+    text-align: center;
+    margin:0px;
+    overflow:hidden;
+    .action-sheet-button{
+      color: color($colors,dark);
+      border-bottom:1px solid color($colors,dark);
+      .button-inner{
+        justify-content: center;
+      }
+      &:last-of-type{
+        border-bottom: none;
+      }
+      &.activated{
+        background:none;
+        margin-top:0px;
+      }
+    }
+    &:last-of-type{
+      padding-bottom:0px;
+      background:none;
+    }
+  }
+  .action-sheet-button{
+    font-size:$mainFont;
+    min-height:0px;
+    font-weight:500;
+    height:$control-height;
+  }
+}
+
+ion-menu{
+  .menu-inner{
+    background:none!important;
+    height:calc(100% - 44px);
+  }
+  .header{
+    .toolbar-background{
+      background:none;
+    }
+    .toolbar{
+      padding:0px 0px $content-padding ;
+    }
+    .item{
+      text-align: center;
+      padding:0px 30px;
+      .item-inner{
+        padding-bottom:30px;
+        border-bottom:1px solid color($colors,light);
+      }
+      ion-avatar{
+        margin:0px $content-padding 10px;
+      }
+      img{
+        margin: 0px auto;
+        width:100px;
+        height:100px;
+      }
+      p{
+        margin:0px;
+        font-weight:300;
+      }
+    }
+  }
+  .content{
+    background:color($colors,color1);
+    .scroll-content{
+      padding:0px 40px;
+    }
+    .grid{
+      .col{
+        display:flex;
+        justify-content:center;
+        .button{
+          height:auto;
+          max-width:100%;
+          padding:$content-padding*2 $content-padding;
+          opacity:1;
+          .button-inner{
+            display:flex;
+            flex-direction:column;
+            align-items: center;
+            .icon{
+              background:color($colors,color2);
+              color:color($colors,light);
+              font-size:2.5rem;
+              width:70px;
+              height:70px;
+              line-height:70px;
+              border-radius:50%;
+              margin: auto;
+              text-align: center;
+            }
+            p{
+              color:color($colors,light);
+              margin: $content-padding 0px 0px;
+              @include whiteNoWrap(20px);
+            }
+          }
+          &.active{
+            .icon{
+              color: color($colors,color2);
+              background:color($colors,light);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+.content-ios:not([no-bounce]) > .scroll-content::before,
+.content-ios:not([no-bounce]) > .scroll-content::after{
+  position:initial;
+  width:0px;
+  height:0px;
+}

@@ -1,9 +1,20 @@
 import { Component, ViewChild } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import { HomePage } from '../pages/home/home';
+import { LoginLightPage } from '../pages/login/login-light-page';
+
+import { Global } from '../providers/global';
+
+export interface PageInterface {
+  title: string;
+  pageName: string;
+  component?: any;
+  index?: number;
+  icon: string;
+}
 
 @Component({
   templateUrl: 'app.html'
@@ -11,19 +22,22 @@ import { HomePage } from '../pages/home/home';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = LoginLightPage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: PageInterface[] = [
+    { title: 'Home', pageName: 'HomePage', component: HomePage, index: 0, icon: 'ios-home' },
+    { title: 'Profile', pageName: '',  component: '', icon: 'md-person' },
+    { title: 'Setting', pageName: '',  component: '', icon: 'ios-settings' },
+    { title: 'Logout', pageName: 'LoginLightPage',  component: LoginLightPage, icon: 'ios-power' },
+  ];
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform,
+    public global: Global,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    private storage: Storage,
+  ) {
     this.initializeApp();
-
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Umfragen', component: HomePage },
-      // { title: 'List', component: ListPage }
-    ];
-
   }
 
   initializeApp() {
@@ -35,9 +49,15 @@ export class MyApp {
     });
   }
 
-  openPage(page) {
+  openPage(page: PageInterface) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+
+    if (page.pageName) {
+      if (page.title === 'Logout') {
+        this.storage.set('token', undefined);
+      }
+      this.nav.setRoot(page.component);
+    }
   }
 }

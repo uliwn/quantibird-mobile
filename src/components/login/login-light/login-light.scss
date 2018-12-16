@@ -1,0 +1,221 @@
+/*  #Style Login light
+================================================*/
+login-light-page {
+
+  /* Settings font size
+  ===========================*/
+  $settings-font-size-header: 30px;
+  $settings-font-size-first-header: 12px;
+  $settings-font-size-button: 12px;
+  $settings-font-size-input-field: 16px;
+  $settings-font-size-description: 10px;
+  $settings-font-size-label: 10px;
+  $settings-font-size-label-value: 10px;
+
+  /* Settings font weight
+  ===========================*/
+  $settings-font-weight-header: 800;
+  $settings-font-weight-button: 600;
+  $settings-font-weight-input-field: 500;
+  $settings-font-weight-description: 400;
+  $settings-font-weight-label: 600;
+  $settings-font-weight-label-value: 700;
+
+  /* Settings text color
+  ==============================*/
+  $settings-text-color-header: #4F4F4F;
+  $settings-text-color-button: #FFFFFF;
+  $settings-text-input-color: #242424;
+  $settings-text-color-description: #919191;
+  $settings-text-color-description-links: #6CD4CA;
+  $settings-text-label-color: #CCCCCC;
+  $settings-text-label-value-color: #242424;
+  $settings-text-label-error-color: #6CD4CA;
+
+  /* Content
+  =========================*/
+  ion-content {
+    font-family: 'Montserrat', sans-serif;
+
+    /* Background
+    =========================*/
+    &[background-size] {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .scroll-content {
+      padding-bottom: 0 !important;
+
+    ion-grid {
+      min-height: 100%;
+
+      [header] {
+        flex: 1;
+      }
+
+      h1 {
+        color: $settings-text-color-header;
+        font-size: $settings-font-size-header;
+        font-weight: $settings-font-weight-header;
+        line-height: 37px;
+        margin-top: 40px;
+        letter-spacing: 1px;
+        text-align: center;
+      }
+
+      h2 {
+        text-align: center;
+        letter-spacing: 1px;
+        margin-top: 35px;
+        color: $settings-text-color-header;
+        font-size: $settings-font-size-first-header;
+        font-weight: $settings-font-weight-header;
+      }
+
+    /* Form
+    =========================*/
+    form {
+
+      ion-item {
+        background-color: transparent !important;
+        padding-bottom: 30px !important;
+        padding-top: 25px !important;
+
+        [error-field] {
+          color: $settings-text-label-error-color;
+          top: 0 !important;
+        }
+
+          &.item-input-has-value {
+            [error-field] {
+              color: $settings-text-label-error-color !important;
+              top: 0 !important;
+        }
+      }
+
+        ion-label {
+          color: $settings-text-label-color;
+          font-size: $settings-font-size-label;
+          font-weight: $settings-font-weight-label;
+          letter-spacing: 1px;
+          margin: 13px 14px 7px 0 !important;
+          position: absolute !important;
+          bottom: 0 !important;
+          width: 100% !important;
+          text-align: center !important;
+          right: 0 !important;
+          left: 0 !important;
+          max-width: 100% !important;
+        }
+
+        .text-input {
+          color: $settings-text-input-color;
+          font-size: $settings-font-size-input-field;
+          font-weight: $settings-font-weight-input-field;
+          text-align: center;
+          padding-bottom: 6px;
+        }
+
+        .item-inner {
+          border-bottom: 2px solid #CCCCCC !important;
+          box-shadow: none !important;
+        }
+
+        .item-inner {
+          border-width: 2px !important;
+        }
+
+        &.item-input-has-value {
+          .label-md,
+          .label-ios {
+            color: $settings-text-label-value-color;
+            font-size: $settings-font-size-label-value;
+            font-weight: $settings-font-weight-label-value;
+          }
+
+          .item-inner {
+            border-bottom-color: #6CD4CA !important;
+            box-shadow: none !important;
+          }
+        }
+
+        &.item-input-has-focus {
+          .item-inner {
+            border-bottom-color: #6CD4CA !important;
+            box-shadow: none !important;
+          }
+        }
+      }
+
+      /* Description
+      =========================*/
+      [description] {
+
+        a {
+          color: $settings-text-color-description-links;
+          font-size: $settings-font-size-description;
+          font-weight: $settings-font-weight-description;
+          text-decoration: none;
+        }
+
+        p {
+          color: $settings-text-color-description;
+          font-size: $settings-font-size-description;
+          font-weight: $settings-font-weight-description;
+        }
+      }
+      /* Settings Login button
+      =========================*/
+      [round] {
+        padding: 30px 55px !important;
+        margin-bottom: 5%;
+        margin-top: 15%;
+        color: $settings-text-color-button;
+        font-size: $settings-font-size-button;
+        font-weight: $settings-font-weight-button;
+        line-height: 15px;
+        letter-spacing: 1px !important;
+        background: #6CD4CA !important;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.16) !important;
+          }
+
+      [signup] {
+        padding: 25px 55px !important;
+        margin-bottom: 15px;
+        margin-top: 5px;
+        color: $settings-text-color-button;
+        font-size: $settings-font-size-button;
+        font-weight: $settings-font-weight-button;
+        line-height: 15px;
+        letter-spacing: 1px !important;
+        background: #488aff !important;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.16) !important;
+      }
+        }
+      }
+    }
+  }
+  /* Responsive for tablet
+ ===============================*/
+  @media (min-width: 576px) and (orientation: portrait) {
+      h2 {
+        padding-top: 70%;
+      }
+      form {
+        padding-bottom: 50%;
+      }
+  }
+
+  @media (min-width: 576px) and (orientation:landscape) {
+      [header]{
+        height: auto !important;
+        margin-bottom: 20px;
+        h2 {
+          padding-top: 50px;
+        }
+      }
+
+  }
+}

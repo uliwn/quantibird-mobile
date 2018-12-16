@@ -9,31 +9,23 @@
 
 <ion-content padding>
 
-  <ion-card *ngFor="let survey of surveys" (click)="goToSurvey(survey)">
-    <ion-card-header>
-      <ion-badge class="question-badge">
-        {{survey.questions.length}}
-      </ion-badge>
-      <ion-row>
-        <ion-col>
-          <small>{{survey.createdAt | date}}</small>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="title">
-          {{survey.name}}
-        </ion-col>
-      </ion-row>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-row>
-        <ion-col>
-          {{survey.description}}
-        </ion-col>
-      </ion-row>
-    </ion-card-content>
-  </ion-card>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
 
-  <!--button ion-button secondary menuToggle>Toggle Menu</button-->
+  <ion-card *ngFor="let item of surveys" (click)="goToSurvey(item)">
+    <div class="card-header">
+      <ion-badge class="question-badge">
+        {{item.questions.length}}
+      </ion-badge>
+      <h4 class="survey-date">{{item.createdAt | date}}</h4>
+    </div>
+
+    <ion-item>
+      <h4 ion-text color="dark">{{item.name}}</h4>
+      <p ion-text color="dark">{{item.description}}</p>
+    </ion-item>
+  </ion-card>
 
 </ion-content>

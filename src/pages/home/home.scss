@@ -1,9 +1,18 @@
-page-home {
+home-page {
+  padding: 16px;
 
   ion-card {
     ion-badge.question-badge {
+      z-index: 1;
       position: absolute;
-      right: 35px;
+      right: 16px;
+      top: 16px;
+      font-size: 1.75rem;
+      background-color: #262938;
+      padding: 0 10px;
+      height: 28px;
+      line-height: 28px;
+      border-radius: 50%;
     }
 
     ion-row {
@@ -19,5 +28,74 @@ page-home {
     }
   }
 
+}
 
+home-page {
+  .survey-date {
+    z-index: 1;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-weight: 600;
+  }
+
+  .scroll-content{
+  }
+
+  .card{
+    position: relative;
+    background:color($colors,color4);
+    margin-bottom: 16px;
+
+    .card-header {
+      height: 80px;
+      opacity: .8;
+      background-color: #73c365;
+    }
+
+    &:last-of-type{
+      margin-bottom:0px;
+    }
+    .item{
+      padding:$content-padding;
+      align-items:flex-end;
+      .button{
+        width:25px;
+        height:40px;
+      }
+      h4{
+        margin:0px!important;
+        @include whiteNoWrap(20px);
+        font-weight:500;
+      }
+      p{
+        -webkit-line-clamp:2;
+        -webkit-box-orient: vertical;
+        @include whiteNormal(32px,2);
+        display: -webkit-box;
+        margin-top:3px;
+      }
+    }
+  }
+  .footer{
+    width:44px;
+    height:44px;
+    left:auto;
+    right:$content-padding*2;
+    bottom:40px + $toolbar-ios-height !important;
+    .button{
+      padding:0px;
+      border-radius:50%;
+      width:44px;
+      height:44px;
+      .icon{
+        font-size:2rem;
+      }
+    }
+  }
+}
+.card {
+  margin:0px;
+  width:100%;
+  border-radius:0px;
 }

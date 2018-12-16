@@ -1,0 +1,57 @@
+<!-- Themes  login-light-->
+<ion-content background-size [ngStyle]="{'background-image': 'url(assets/images/light-3.jpg)'}">
+  <ion-grid no-padding>
+    <ion-row header align-items-start align-items-stretch>
+      <ion-col col-10 offset-1 col-md-6 offset-md-3>
+        <h2 text-uppercase>Login</h2>
+        <h1 text-uppercase>QUANTIBIRD</h1>
+      </ion-col>
+    <!-- </ion-row> -->
+    <!-- Form Content -->
+    <!-- <ion-row content-form> -->
+      <ion-col col-12>
+        <form>
+          <ion-row>
+            <ion-col col-10 offset-1 col-md-6 offset-md-3>
+              <!-- Input Email -->
+              <ion-item no-padding>
+                <ion-input type="email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}"></ion-input>
+                <ion-label text-uppercase>Email</ion-label>
+                <ion-label error-field text-uppercase *ngIf="!isEmailValid">Field error...</ion-label>
+              </ion-item>
+              <!-- Input Password -->
+              <ion-item no-padding>
+                <ion-input type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}"></ion-input>
+                <ion-label text-uppercase>Passwort</ion-label>
+                <ion-label error-field text-uppercase *ngIf="!isPasswordValid">Field error...</ion-label>
+              </ion-item>
+              <!-- login Button -->
+              <ion-row text-center>
+                <ion-col col-12 no-padding>
+                  <button ion-button round text-uppercase (click)="onEvent('onLogin')">Anmelden</button>
+                </ion-col>
+              </ion-row>
+              <!-- Input Description -->
+              <div description text-center>
+                <ion-row>
+                  <ion-col col-12 no-padding>
+                    <!--<p>{{data.txtForgotPassword}} <a (click)="onEvent('onResetPassword')">{{data.btnResetYourPassword}}</a></p>-->
+                  </ion-col>
+                  <ion-col col-12 no-padding>
+                    <p no-margin no-padding>Noch kein Konto erstellt? <!--a (click)="onEvent('onRegister')">Signup now</a--></p>
+                  </ion-col>
+                </ion-row>
+                <!-- signup Button -->
+                <ion-row text-center>
+                  <ion-col col-12>
+                    <button no-margin ion-button round signup text-uppercase (click)="onEvent('onRegister')">Signup now</button>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

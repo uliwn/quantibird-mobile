@@ -15,60 +15,55 @@ $app-direction: ltr;
 @import "ionic.globals";
 
 
-// Shared Variables
-// --------------------------------------------------
-// To customize the look and feel of this app, you can override
-// the Sass variables found in Ionic's source scss files.
-// To view all the possible Ionic variables, see:
-// http://ionicframework.com/docs/theming/overriding-ionic-variables/
-
-
-
-
-// Named Color Variables
-// --------------------------------------------------
-// Named colors makes it easy to reuse colors on various components.
-// It's highly recommended to change the default colors
-// to match your app's branding. Ionic uses a Sass map of
-// colors so you can add, rename and remove colors as needed.
-// The "primary" color is the only required color in the map.
-
 $colors: (
   primary:    #488aff,
   secondary:  #32db64,
   danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
+  light:      #ffffff,
+  dark:       #000000,
+  color1:     #66c3b1,
+  color2:     #fb7a52,
+  color3:     #5e5e5e,
+  color4:     #f1f1f1    
 );
+      
+    
+$content-padding:16px;
+$content-margin:$content-padding;
+$control-height:44px;    
+$control-radius:4px;         
+$grid-padding-width:$content-padding ;
+  
+// sidemenu
+$menu-width:100%;
+$menu-small-width:$menu-width;  
+// App  Variables 
+$mainFont:1.3rem;  
+ $appFonts:(h4:$mainFont + .1,h5:$mainFont,p:$mainFont - .1);
+ @each $head , $fontSize in $appFonts {
+    #{$head}{
+      font-size:$fontSize!important;
+    } 
+ }
 
+ // toolbar variables       
+$toolbar-ios-height:50px;           
+$toolbar-ios-title-font-size:$mainFont + .1;
+$toolbar-ios-title-text-color:color($colors,light);     
+$header-background:color($colors,color1);
+$toolbar-ios-button-border-radius:0px;
+$toolbar-ios-title-text-align:left;        
+// input variables      
+$text-input-placeholder-color:color($colors,dark);
+$text-input-ios-show-focus-highlight:false;
 
-// App iOS Variables
-// --------------------------------------------------
-// iOS only Sass variables can go here
+// button variables
+$button-ios-font-size:1.3rem;
+$button-ios-border-radius:$control-radius;    
+$button-ios-height:$control-height;  
 
-
-
-
-// App Material Design Variables
-// --------------------------------------------------
-// Material Design only Sass variables can go here
-
-
-
-
-// App Windows Variables
-// --------------------------------------------------
-// Windows only Sass variables can go here
-
-
-
-
-// App Theme
-// --------------------------------------------------
-// Ionic apps can have different themes applied, which can
-// then be future customized. This import comes last
-// so that the above variables are used and Ionic's
-// default are overridden.
+// tabs variables
+$tabs-ios-tab-icon-color:color($colors,color2);             
 
 @import "ionic.theme.default";
 

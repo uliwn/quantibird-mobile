@@ -1,14 +1,14 @@
 {
   "name": "quantibird-mobile",
-  "app_id": "6fe6d77f",
-  "type": "ionic-angular",
   "integrations": {
     "cordova": {}
   },
+  "type": "ionic-angular",
   "proxies": [
     {
       "path": "",
       "proxyUrl": "http://quantibird.herokuapp.com/api"
     }
-  ]
+  ],
+  "pro_id": "6fe6d77f"
 }

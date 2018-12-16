@@ -1,0 +1,61 @@
+<!-- Themes  Register-light-->
+<ion-content background-size [ngStyle]="{'background-image': 'url(assets/images/light-1.jpg)'}">
+  <ion-grid no-padding>
+    <ion-row header align-items-start align-items-stretch>
+      <ion-col col-10 offset-1 col-md-6 offset-md-3>
+        <h2 text-uppercase>Signup</h2>
+        <h1 text-uppercase>QUANTIBIRD</h1>
+      </ion-col>
+    <!-- Form Content -->
+      <ion-col col-12>
+    <form>
+      <ion-row align-items-stretch>
+        <ion-col col-10 offset-1 col-md-6 offset-md-3>
+          <!-- Input Text -->
+          <ion-item no-padding>
+            <ion-input type="text" [(ngModel)]="firstName" [ngModelOptions]="{standalone: true}"></ion-input>
+            <ion-label text-uppercase>Vorname</ion-label>
+            <ion-label error-field text-uppercase *ngIf="!isFirstNameValid">Field error...</ion-label>
+          </ion-item>
+          <!-- Input Text -->
+          <ion-item no-padding>
+            <ion-input type="text" [(ngModel)]="lastName" [ngModelOptions]="{standalone: true}"></ion-input>
+            <ion-label text-uppercase>Name</ion-label>
+            <ion-label error-field text-uppercase *ngIf="!isLastNameValid">Field error...</ion-label>
+          </ion-item>
+          <!-- Input Email -->
+          <ion-item no-padding>
+            <ion-input type="email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}"></ion-input>
+            <ion-label text-uppercase>Email</ion-label>
+            <ion-label error-field text-uppercase *ngIf="!isEmailValid">Field error...</ion-label>
+          </ion-item>
+          <!-- Input Text -->
+          <ion-item no-padding>
+            <ion-input type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}"></ion-input>
+            <ion-label text-uppercase>Password</ion-label>
+            <ion-label error-field text-uppercase *ngIf="!isPasswordValid">Field error...</ion-label>
+          </ion-item>
+          <!-- Sign Up Button -->
+          <ion-row>
+            <ion-col col-10 offset-1 col-md-6 offset-md-3 text-center>
+            <button ion-button round text-uppercase (click)="onEvent('onRegister')">Sign Up</button>
+          </ion-col>
+        </ion-row>
+            <ion-row>
+              <ion-col col-10 offset-1 col-md-8 offset-md-2>
+                <!-- Input Description -->
+                <div description text-center>
+                <p no-margin no-padding>By Creating an account you agree to our </p>
+                <p no-margin><a (click)="onEvent('onTermsConditions')">Terms & Conditions</a> and
+                  <a (click)="onEvent('onPrivacyPolicy')">Privacy Policy</a>
+                </p>
+              </div>
+              </ion-col>
+            </ion-row>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-col>
+</ion-row>
+  </ion-grid>
+</ion-content>

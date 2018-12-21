@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, LoadingController, NavController, NavParams } from 'ionic-angular';
 import { User } from '../../models/user.model';
 
 import { RegisterService } from '../../services/register.service';
@@ -26,6 +26,7 @@ export class RegisterLightPage {
     public service: RegisterService,
     private toastCtrl: ToastService,
     private storage: Storage,
+    private loadingCtrl: LoadingController,
   ) {
     this.events = {
       "onLogin" : this.onLogin,
@@ -36,7 +37,7 @@ export class RegisterLightPage {
   }
 
   onLogin = (params):any => {
-      this.navCtrl.push("LoginLightPage");
+      this.navCtrl.setRoot("LoginLightPage");
   };
 
   onRegister = (params):any => {
@@ -49,26 +50,32 @@ export class RegisterLightPage {
       user.email = params.email;
       user.password = params.password;
 
+      let loading = this.loadingCtrl.create({
+        content: 'Please wait...'
+      });
+      loading.present();
+
       this.service.register(user).subscribe(
           res => {
               console.log('res register', res);
               this.storage.set('user', res);
-              this.toastCtrl.presentToast('Sign Up successful, ' + res.firstname);
+              this.toastCtrl.presentToast('sign-up successful, ' + res.firstname);
               this.onLogin(res);
+              loading.dismiss();
           },
-          res => this.toastCtrl.presentToast('error: ' + res),
+          res => {
+            loading.dismiss();
+            this.toastCtrl.presentToast('error: ' + res);
+          },
       );
   };
 
-
-  /*  Todo override this function with your logic
-  =================================================*/
   onTermsConditions = (params):any => {
       this.toastCtrl.presentToast('Terms Conditions');
   };
-  /*  Todo override this function with your logic
-  =================================================*/
+
   onPrivacyPolicy = (params):any => {
       this.toastCtrl.presentToast('Privacy Policy');
   };
+  
 }

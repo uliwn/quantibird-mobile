@@ -22,7 +22,9 @@ export class LoginLight {
   constructor(private storage: Storage) {
     this.isEmailValid = true;
     this.isPasswordValid = true;
+  }
 
+  ngOnInit() {
     this.storage.get('user').then((user: User) => {
       if (user) {
         this.email = user.email;

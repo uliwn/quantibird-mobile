@@ -90,5 +90,5 @@
         <variable name="MAX_STORE" value="2" />
     </plugin>
     <plugin name="cordova-sqlite-storage" spec="^2.5.2" />
-    <engine name="android" spec="7.1.0" />
+    <engine name="android" spec="^7.1.4" />
 </widget>

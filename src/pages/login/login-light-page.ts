@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, LoadingController, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { User } from '../../models/user.model';
 
 import { LoginService } from '../../services/login.service';
 import { ToastService } from '../../services/toast.service'
@@ -26,13 +25,16 @@ export class LoginLightPage {
     public service: LoginService,
     private toastCtrl: ToastService,
     private storage: Storage,
+    private loadingCtrl: LoadingController,
   ) {
     this.events =  {
       "onLogin" : this.onLogin,
       "onRegister" : this.onRegister,
       "onResetPassword" : this.onResetPassword
     };
+  }
 
+  ngOnInit() {
     this.storage.get('token').then((token) => {
       console.log('token', token);
       if (token) {
@@ -43,6 +45,11 @@ export class LoginLightPage {
 
   onLogin = (params): void => {
     console.log('params:', params);
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    loading.present();
+
     this.service.login(params).subscribe(
         res => {
             console.log('res login', res);
@@ -51,19 +58,19 @@ export class LoginLightPage {
 
             this.toastCtrl.presentToast('Hello ' + res.user.firstname);
             this.navCtrl.setRoot(HomePage);
+            loading.dismiss();
         },
-        res => this.toastCtrl.presentToast('Login unsuccessful!')
+        res => {
+          loading.dismiss();
+          this.toastCtrl.presentToast('Login unsuccessful!');
+        }
     );
   };
 
-  /*  Open RegisterLightPage
- 	==================================*/
   onRegister = (params): void => {
     this.navCtrl.push("RegisterLightPage");
   };
 
-  /*  Open ResetPasswordLightPage
-  =================================*/
   onResetPassword = (params): void => {
     this.navCtrl.push("ResetPasswordLightPage");
   };

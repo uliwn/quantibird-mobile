@@ -56,7 +56,8 @@ export class LoginLightPage {
             this.storage.set('user', res.user);
             this.storage.set('token', res.token);
 
-            this.toastCtrl.presentToast('Hello ' + res.user.firstname);
+            const name = res.user.firstname ? res.user.firstname : res.user.username;
+            this.toastCtrl.presentToast('Hello ' + name);
             this.navCtrl.setRoot(HomePage);
             loading.dismiss();
         },

@@ -1,15 +1,15 @@
-<ion-menu [content]="content" swipeEnabled="false" type="overlay">
+<ion-menu [content]="content" (ionOpen)="menuOpened()" swipeEnabled="false" type="overlay">
   <ion-header>
     <ion-toolbar>
-      <button ion-button icon-only clear  menuClose >
+      <button ion-button icon-only clear menuClose class="menu-close">
         <ion-icon name="ios-arrow-round-back" color="light"></ion-icon>
       </button>
       <ion-item>
         <ion-avatar>
-          <img src="assets/imgs/profile.png">
+          <img src="assets/imgs/avatar-icon-1.png">
         </ion-avatar>
-        <h5 ion-text color="light">Julia Flipi</h5>
-        <p ion-text color="light">USA</p>
+        <h5 ion-text color="light">{{name}}</h5>
+        <!--p ion-text color="light">USA</p-->
       </ion-item>
     </ion-toolbar>
   </ion-header>
